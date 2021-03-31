@@ -1,0 +1,61 @@
+<body>
+    <style>
+        @include reset-box-sizing;
+        @include reset-lists;
+
+        .wave {
+	width:100px;
+    float:left;
+	margin-top:190px;
+    margin-left:-100px;
+	position:relative;
+	height: 100px;
+	background: url('https://cdn0.iconfinder.com/data/icons/adventures-03/64/123_Water-512.png') repeat-x 0%;
+    opacity:0.2;
+    background-size: contain;
+	transform: rotate(270deg);
+	animation: 20s wave linear infinite;
+        }
+	
+	.wave::before{
+		content:"";
+		height:100%;
+		width:100%;
+		@include absolute(0,0);
+	}
+
+@keyframes wave {
+	0% {
+		background-position: 0 0;}
+	100% {
+		background-position: 300px 0;
+	}
+}
+
+          .robot {
+            width:400px;
+            height:400px;
+            float:left;
+            margin-top:55px;
+            margin-left:60px;
+          }
+        body {
+            background-image: url("https://image.freepik.com/free-photo/wooden-board-empty-table-top-blurred-background_1253-1584.jpg");
+            background-repeat:no-repeat;
+            background-size:1280px 620px;     
+        }
+        div {
+            width: 600px;
+            height: 450px;
+            background-color: #919dc4;
+            margin:60px 550px;
+            position:absolute           
+    
+    
+    </style>
+    <div>
+
+    </div>
+    <img class="robot" src="https://png2.cleanpng.com/sh/952f699ce6b6aab4fccbd61cc20e842f/L0KzQYm3VMA2N6NAfZH0aYP2gLBuTgJwapD5RdV4b3vsfri0gBxqeF5miuY2YoLocbztggN1NWZme6hsMkbkdYe5UMQzNmcAT6c8OEe5QYa5Usk4PWQ4UKs9MkaxgLBu/kisspng-robot-cooking-clip-art-breakfast-5ac6c26ae62042.6975387615229753389426.png">
+    <div class="wave"></div>
+    </body>
