@@ -1,5 +1,3 @@
-<body>
-    <style>
         @include reset-box-sizing;
         @include reset-lists;
 
@@ -51,11 +49,3 @@
             margin:60px 550px;
             position:absolute           
         }
-    
-    </style>
-    <div>
-
-    </div>
-    <img class="robot" src="https://png2.cleanpng.com/sh/952f699ce6b6aab4fccbd61cc20e842f/L0KzQYm3VMA2N6NAfZH0aYP2gLBuTgJwapD5RdV4b3vsfri0gBxqeF5miuY2YoLocbztggN1NWZme6hsMkbkdYe5UMQzNmcAT6c8OEe5QYa5Usk4PWQ4UKs9MkaxgLBu/kisspng-robot-cooking-clip-art-breakfast-5ac6c26ae62042.6975387615229753389426.png">
-    <div class="wave"></div>
-    </body>
