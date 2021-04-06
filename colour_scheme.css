@@ -40,7 +40,9 @@
         body {
             background-image: url("https://image.freepik.com/free-photo/wooden-board-empty-table-top-blurred-background_1253-1584.jpg");
             background-repeat:no-repeat;
-            background-size:1280px 620px;     
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 100% 100%;      
         }
         div {
             width: 600px;
