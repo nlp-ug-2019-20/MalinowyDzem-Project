@@ -10,7 +10,20 @@ function findByIngredients(ingredient){
    .then(response => response.json())
                 .then(response => {
                    console.log(response)
+                  recipeId = response[0]["id"]
+                   console.log(recipeId)
                 })
                
 }
 findByIngredients("potato")
+recipeId = 1091312
+
+function getRecipeInstruction(recipeId){
+   let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
+   fetch (url)
+   .then(response => response.json())
+       .then(response => {
+           console.log(response)
+       })
+}
+getRecipeInstruction(recipeId)
