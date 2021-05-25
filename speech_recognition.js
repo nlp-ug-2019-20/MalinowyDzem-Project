@@ -1,4 +1,4 @@
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
 const synth = window.speechSynthesis;
@@ -9,6 +9,11 @@ recognition.continuous = true;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 50;
+voices.lang = 'en-US';
+
+let recipe1 = "chicken recipe"
+let recipe2 = "eggs recipe"
+let greeting = "Welcome to Foodbot! What dish would you like to make? Say the name of the dish or an ingredient."
 
 const startButton = document.querySelector('button');
 const diagnostic = document.querySelector('.output');
@@ -16,28 +21,28 @@ const text = document.querySelector('.text')
 const bg = document.querySelector('html');
 
 startButton.onclick = function() {
+    const speech = new SpeechSynthesisUtterance();
     recognition.start()
-    speak("Welcome to Foodbot! What dish would you like to make? Say the name of the dish or an ingredient.");
+    speech.text = greeting;
+    window.speechSynthesis.speak(speech);
        
 }
 
 recognition.onresult = function(event) {
-    let recognitionResult = event.results[0][0].transcript;
-    diagnostic.textContent = 'Result received: ' + recognitionResult;
-    if (recognitionResult == "chicken") {
-        speak("chicken recipe");
-        text.textContent = "chicken recipe";
-    }
-    if (recognitionResult == "eggs") {
-        speak("eggs recipe");
-        text.textContent = "eggs recipe";
+    const current = event.resultIndex;
+    const transcript = event.results[current][0].transcript;
+    readOutLoud(transcript)
+  }
 
-    }
-}
-  
-function speak(text) {
-    let utterThis = new SpeechSynthesisUtterance(text);
-    utterThis.lang = "en-US";
-    console.log(utterThis);
-    synth.speak(utterThis);
-}
+  const readOutLoud = (message) => {
+    const speech = new SpeechSynthesisUtterance();
+        if (message.includes('hello')){
+        let finalText = recipe1;
+        speech.text = finalText
+      } else if (message.includes('hi')) {
+        let finalText = recipe2;
+        speech.text = finalText
+      } 
+      speech.lang = 'eng-US';
+      window.speechSynthesis.speak(speech);
+      }
