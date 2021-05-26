@@ -1,4 +1,4 @@
-var options = document.getElementById("options")
+const options = document.getElementById("options")
 var qNumb = 0;
 var question = '<h1>Hello, I am Foodbot. What is your name?</h1>';
 var output = document.getElementById('output');
@@ -50,19 +50,21 @@ function findByIngredients(ingredient){
    .then(response => response.json())
                 .then(response => {
                    buttonBox.innerHTML=""
-                   console.log(response)
+                  //  console.log(response)
                     for(let index=0;index<response.length;index++){
-                       if (response.length>2){
+                       if (index > 2) {
                            break
                        }
-                        let button=document.createElement("button")
+                       let button=document.createElement("button");
                        let title=response[index].title
                        let id=response[index].id
                        button.append(title)
-                       button.value(id)
-                       button.onclick = getRecipeInstruction(e.value)
-                       options.appendChild(button);
-                       console.log(button)
+                       button.value = id;
+                       button.addEventListener('click', (e) => {
+                         console.log(button.value);
+                         getRecipeInstruction(button.value);
+                       })
+                       options.append(button);
                    }
             
                 //     console.log(response)
@@ -77,14 +79,13 @@ function getRecipeInstruction(recipeId){
    fetch (url)
    .then(response => response.json())
        .then(response => {
-           let instructions=""
-        for(let index=0;index<response.steps.length;index++){
-            instructions+=response.steps[index].step
-            
-        }
-        output=`<h1>${instructions}</h1>`
-           console.log(response)
+         console.log(response)
+         let instructions=""
+         for(let index=0;index<response[0].steps.length;index++){
+            instructions+=response[0].steps[index].step  
+         }
+         console.log(instructions);
+        output.innerHTML = "";
+        output.append(`${instructions}`);
        })
 }
-getRecipeInstruction(recipeId)
-
