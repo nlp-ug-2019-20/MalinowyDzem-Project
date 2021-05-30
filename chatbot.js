@@ -16,6 +16,7 @@ function chatBot() {
   }
     else if (qNumb == 1) {
         output.innerHTML = '<h1>...</h1>';
+        question = '<h1>Pick a dish that you want to make.</h1>';
         findByIngredients(input);
         document.getElementById('input').value = "";
         setTimeout(timedQuestion, 1000);
@@ -62,7 +63,7 @@ function findByIngredients(ingredient){
                        button.value = id;
                        button.addEventListener('click', (e) => {
                          console.log(button.value);
-                         getRecipeInstruction(button.value);
+                         getRecipeIgredients(button.value);
                        })
                        options.append(button);
                    }
@@ -73,19 +74,33 @@ function findByIngredients(ingredient){
                 })
                
 }
-
-function getRecipeInstruction(recipeId){
-   let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
-   fetch (url)
-   .then(response => response.json())
-       .then(response => {
-         console.log(response)
-         let instructions=""
-         for(let index=0;index<response[0].steps.length;index++){
-            instructions+=response[0].steps[index].step  
-         }
-         console.log(instructions);
-        output.innerHTML = "";
-        output.append(`${instructions}`);
-       })
-}
+function getRecipeIgredients(recipeId){
+  let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
+  fetch (url)
+  .then(response => response.json())
+      .then(response => {
+        console.log(response)
+        let ingredientsList=""
+        for(let index=0;index<response[0].steps[0].ingredients.length;index++){
+           ingredientsList+=response[0].steps[0].ingredients[index].name
+        }
+        console.log(ingredientsList);
+       output.innerHTML = "";
+       output.append(`${ingredientsList}`);
+      })
+    }
+      function getRecipeInstruction(recipeId){
+        let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
+        fetch (url)
+        .then(response => response.json())
+            .then(response => {
+              console.log(response)
+              let instructions=""
+              for(let index=0;index<response[0].steps.length;index++){
+                 instructions+=response[0].steps[index].step  
+              }
+              console.log(instructions);
+             output.innerHTML = "";
+             output.append(`${instructions}`);
+            })
+     }
