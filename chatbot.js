@@ -81,7 +81,7 @@ function getRecipeIgredients(recipeId){
   .then(response => response.json())
       .then(response => {
         console.log(11111,response)
-        let ingredientsList=""
+        let ingredientsList="You will need: "
         let stepsLength = (response[0] && response[0].steps && response[0].steps.length) | 0
         for(let index=0;index<stepsLength;index++){
           let ingredientsLength = (response[0].steps[index].ingredients && response[0].steps[index].ingredients.length) | 0
@@ -110,7 +110,7 @@ function getRecipeIgredients(recipeId){
               console.log(response)
               let instructions=""
               for(let index=0;index<response[0].steps.length;index++){
-                 instructions+=response[0].steps[index].step  
+                 instructions+=response[0].steps[index].step + " "
               }
               console.log(instructions);
               document.getElementById("output2").appendChild(secondOutput);
