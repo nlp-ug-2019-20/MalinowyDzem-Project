@@ -1,3 +1,12 @@
+.d-block{
+width: 80%;
+height: 80%;
+position: center;
+margin: auto;
+margin-top: 10px;
+
+
+}
 .chat-box__sign {
     font-size: 9px;
     line-height: 20px;
@@ -8,12 +17,12 @@
 #chat-circle,
 .chat-msg.bot>.msg-avatar {
 
-    background-image: linear-gradient( to bottom right, rgb(74, 158, 197), rgba(246, 72, 72, 1));
+    background-image: linear-gradient( to center, rgb(100, 100, 100), rgb(255, 255, 255));
 }
 
 
 .spiner > *  {
-    background: rgba(246, 72, 72, 1);
+    background: rgb(0, 0, 0);
 }
 
 #chat-circle {
@@ -26,7 +35,7 @@
     color: white;
     padding: 15px;
     cursor: pointer;
-    box-shadow: 0px 3px 16px 0px rgba(246, 72, 72, 0.5), 0 3px 1px -2px rgba(246, 72, 72, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.5), 0 3px 1px -2px rgba(246, 72, 72, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 
