@@ -63,7 +63,8 @@ function findByIngredients(ingredient){
                        button.value = id;
                        button.addEventListener('click', (e) => {
                          console.log(button.value);
-                         getRecipeIgredients(button.value);
+                         getRecipeIgredients(button.value)
+                         getRecipeInstruction(button.value);
                        })
                        options.append(button);
                    }
@@ -82,13 +83,14 @@ function getRecipeIgredients(recipeId){
         console.log(response)
         let ingredientsList=""
         for(let index=0;index<response[0].steps[0].ingredients.length;index++){
-           ingredientsList+=response[0].steps[0].ingredients[index].name
+           ingredientsList+=response[index].steps[index].ingredients[index].name
         }
         console.log(ingredientsList);
        output.innerHTML = "";
        output.append(`${ingredientsList}`);
       })
     }
+    
       function getRecipeInstruction(recipeId){
         let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
         fetch (url)
@@ -100,7 +102,7 @@ function getRecipeIgredients(recipeId){
                  instructions+=response[0].steps[index].step  
               }
               console.log(instructions);
-             output.innerHTML = "";
-             output.append(`${instructions}`);
+              secondOutput.innerHTML = "";
+              secondOutput.append(`${instructions}`);
             })
      }
