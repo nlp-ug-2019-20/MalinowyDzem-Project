@@ -2,6 +2,11 @@
 * {
   box-sizing: border-box;
 }
+.navbar {
+  position:absolute;
+  width:100%;
+  top:0;
+}
 
 body {
   text-align: center;
@@ -55,6 +60,30 @@ input[type="text"] {
 }
 
 #output:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 40px solid white;
+  position: absolute;
+  bottom: -25px;
+  left: 35%;
+  -ms-transform: rotate(-25deg); /* IE 9 */
+  -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
+  transform: rotate(-25deg);
+}
+
+#secondOutput {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative; opacity: 0.8;
+}
+
+#secondOutput:before {
   content: '';
   width: 0;
   height: 0;
