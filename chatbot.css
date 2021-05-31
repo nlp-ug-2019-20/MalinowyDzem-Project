@@ -95,7 +95,7 @@ input[type="text"] {
   transform: rotate(-25deg);
 }
 
-#secondOutput {
+.secondOutput {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 100px;
@@ -104,7 +104,7 @@ input[type="text"] {
   position: relative; opacity: 0.8;
 }
 
-#secondOutput:before {
+.secondOutput:before {
   content: '';
   width: 0;
   height: 0;
