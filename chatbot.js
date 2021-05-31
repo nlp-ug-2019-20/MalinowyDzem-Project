@@ -37,7 +37,7 @@ function pressKey(event) {
   }
 }
 
-let pass ="?apiKey=51db09fa50d840a89812ab4301106df5"
+let pass ="?apiKey=8cff268749b8427bafa3345580f5662f"
 // fetch(url="https://api.spoonacular.com/recipes/complexSearch?apiKey=51db09fa50d840a89812ab4301106df5")
 //                 .then(response => response.json())
 //                 .then(response => {
@@ -92,6 +92,7 @@ function getRecipeIgredients(recipeId){
     }
     
       function getRecipeInstruction(recipeId){
+        var secondOutput = document.createElement("div");
         let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
         fetch (url)
         .then(response => response.json())
@@ -102,6 +103,8 @@ function getRecipeIgredients(recipeId){
                  instructions+=response[0].steps[index].step  
               }
               console.log(instructions);
+              document.getElementById("output2").appendChild(secondOutput);
+              secondOutput.className = "secondOutput";
               secondOutput.innerHTML = "";
               secondOutput.append(`${instructions}`);
             })
