@@ -6,17 +6,34 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="chatbot.css">
+	<link rel="stylesheet" type="text/css" href="chat.css">
 </head>
 
 <body>
-
-	<nav class="navbar navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 		  <a class="navbar-brand" href="#">Menu</a>
-		  <a class="navbar-brand" href="index.html">Home</a>
-		  <a class="navbar-brand" href="recipes.html">Favourite recipes</a>
-		  <a class="navbar-brand" href="about_us.html">About us</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+		  data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+		  aria-label="Toggle navigation">
+			
+		  <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+			  </li>
+	
+			  <li class="nav-item">
+				<a class="nav-link" href="recipes.html">Favourite recipes</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="about_us.html">About us</a>
+			  </li>
+			</ul>
 		  </div>
+		</div>
 	  </nav>
 		  
 
@@ -28,14 +45,22 @@
 		<div class="avatar">
 		  <img src="bot_icon.png" alt="">
 		</div>
+	  <div class="container">
 		<input type="text" id="input" placeholder="...">
+	  </div>
 	</div>
 	</section>
 
+	<div id="chat-circle" class="button1" class="col-md-12 hover-slide text-center">
+		<input type="image" class="chat-circle_robot" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg">
+	  </a>
+	</div>
 	  
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 	  <script src="chatbot.js"></script>
+	  <script src="speech_recognition.js"></script>
+  
 </body>
 
 </html>
