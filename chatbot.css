@@ -26,7 +26,7 @@ button {
   color: black;
   transition-duration: 0.4s;
   z-index: 5;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
 }
 button:hover {background-color: #4CAF50;
   color: white;}
@@ -59,7 +59,7 @@ body:after {
   right: 0;
   position: absolute;
   z-index: -1;
-  height: 110%;
+  height: 120%;
 }
 
 h1 {

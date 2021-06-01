@@ -40,8 +40,8 @@ const readOutLoud = (message) => {
       console.log(message);
       if (message = true){
       speech.lang = 'en-US';
-      speech.text = "Pick a dish that you would like to make";
-      output.innerHTML = '<h1>Pick a dish that you would like to make.</h1>';
+      speech.text = "Pick a dish that you would like to make and say read instructions to hear the recipe";
+      output.innerHTML = "<h1>Pick a dish that you would like to make and say 'read instructions' to hear the recipe.</h1>";
       window.speechSynthesis.speak(speech);
       }
       }
@@ -88,7 +88,7 @@ function pressKey(event) {
   }
 }
 
-let pass ="?apiKey=f3c6e3f821ea475bb7e053bcf7549378"
+let pass ="?apiKey=9caec8ed15b345498998c4d286067c56"
 // fetch(url="https://api.spoonacular.com/recipes/complexSearch?apiKey=51db09fa50d840a89812ab4301106df5")
 //                 .then(response => response.json())
 //                 .then(response => {
