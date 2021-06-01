@@ -141,13 +141,14 @@ function getRecipeIgredients(recipeId){
               ingredientsList += response[0].steps[index].ingredients[i].name + '.'
             } else {
               ingredientsList += response[0].steps[index].ingredients[i].name + ', '
+              var removeDup = [...new Set(ingredientsList.split(","))].join(",");
             }
           }
         }
       
-        console.log(ingredientsList);
+        console.log(removeDup);
        output.innerHTML = "";
-       output.append(`${ingredientsList}`);
+       output.append(`${removeDup}`);
        options.remove()
 
        recognition.onresult = function(event) {
@@ -160,7 +161,7 @@ function getRecipeIgredients(recipeId){
         if (message.includes('read ingredients')) {
         const speech = new SpeechSynthesisUtterance()  
         speech.lang = 'en-Us';
-        speech.text = ingredientsList;
+        speech.text = removeDup;
         window.speechSynthesis.speak(speech);
       }
     }
