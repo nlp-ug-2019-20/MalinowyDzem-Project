@@ -1,10 +1,32 @@
+.carousel-caption h5{
+    margin: 0;
+    position: absolute;
+    top: -20px; 
+    transform: translate(0, -50%);
+}
+
+
+.carousel-caption p{
+margin: 0;
+position: absolute;
+top: 0;
+transform: translate(0, -50%);
+}
+
+
 .d-block{
-width: 80%;
-height: 80%;
-position: center;
+width: 90%;
 margin: auto;
 margin-top: 10px;
 }
+
+@media only screen and (max-width: 768px){
+    .d-block{
+        width: 100%;
+        margin-top: 100px;
+    }
+    }
+
 
 .button1{
     z-index: 5;
