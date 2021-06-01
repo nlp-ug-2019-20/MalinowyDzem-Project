@@ -4,9 +4,13 @@ height: 80%;
 position: center;
 margin: auto;
 margin-top: 10px;
-
-
 }
+
+.button1{
+    z-index: 5;
+}
+
+
 .chat-box__sign {
     font-size: 9px;
     line-height: 20px;
