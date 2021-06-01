@@ -98,9 +98,11 @@ function getRecipeIgredients(recipeId){
         console.log(ingredientsList);
        output.innerHTML = "";
        output.append(`${ingredientsList}`);
+       options.remove()
       })
     }
-    
+
+
       function getRecipeInstruction(recipeId){
         var secondOutput = document.createElement("div");
         let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
