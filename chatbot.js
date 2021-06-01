@@ -1,7 +1,6 @@
 //Speech Recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
-
 const synth = window.speechSynthesis;
 let voices = synth.getVoices();
 
@@ -11,7 +10,7 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 50;
 voices.lang = 'en-US';
-let greeting = "Welcome to Foodbot! What dish would you like to make? Say the name of the dish or an ingredient."
+let greeting = "Welcome to Foodbot! What dish would you like to make? Say the name of the ingredient."
 
 
 const startButton = document.querySelector('.chat-circle_robot');
@@ -21,6 +20,7 @@ const bg = document.querySelector('html');
 
 startButton.onclick = function() {
     const speech = new SpeechSynthesisUtterance();
+    speech.lang = 'en-US';
     recognition.start()
     speech.text = greeting;
     output.innerHTML = "<h1>"+ greeting + "</h1>"; 
@@ -37,7 +37,15 @@ recognition.onresult = function(event) {
 const readOutLoud = (message) => {
   const speech = new SpeechSynthesisUtterance();
       findByIngredients(message);
-}
+      console.log(message);
+      if (message = true){
+      speech.lang = 'en-US';
+      speech.text = "Pick a dish that you would like to make";
+      output.innerHTML = '<h1>Pick a dish that you would like to make.</h1>';
+      window.speechSynthesis.speak(speech);
+      }
+      }
+
 //Speech Recognition
 
 const options = document.getElementById("options")
@@ -80,7 +88,7 @@ function pressKey(event) {
   }
 }
 
-let pass ="?apiKey=51db09fa50d840a89812ab4301106df5"
+let pass ="?apiKey=f3c6e3f821ea475bb7e053bcf7549378"
 // fetch(url="https://api.spoonacular.com/recipes/complexSearch?apiKey=51db09fa50d840a89812ab4301106df5")
 //                 .then(response => response.json())
 //                 .then(response => {
@@ -148,10 +156,10 @@ function getRecipeIgredients(recipeId){
         readOutLoud(transcript)
       }
       const readOutLoud = (message) => {  
-        const speech = new SpeechSynthesisUtterance();
         console.log(message);
         if (message.includes('read ingredients')) {
-        const speech = new SpeechSynthesisUtterance();
+        const speech = new SpeechSynthesisUtterance()  
+        speech.lang = 'en-Us';
         speech.text = ingredientsList;
         window.speechSynthesis.speak(speech);
       }
@@ -182,10 +190,10 @@ function getRecipeIgredients(recipeId){
                 readOutLoud(transcript)
               }
               const readOutLoud = (message) => {  
-                const speech = new SpeechSynthesisUtterance();
                 console.log(message);
                 if (message.includes('read instructions')) {
                 const speech = new SpeechSynthesisUtterance();
+                speech.lang = 'en-Us'
                 speech.text = instructions;
                 window.speechSynthesis.speak(speech);
               }
