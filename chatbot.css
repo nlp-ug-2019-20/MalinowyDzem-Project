@@ -1,4 +1,3 @@
-/* HTML CSS JSResult Skip Results Iframe */
 * {
   box-sizing: border-box;
 }
@@ -6,9 +5,19 @@
   position:absolute;
   width:100%;
   top:0;
+  z-index: 5;
 }
 
-button {
+
+.output{
+  overflow: auto;
+}
+.secondOutput{
+  overflow: auto;
+
+}
+
+.button {
   font-size: 15px;
   width:100%;
   display:block;
@@ -17,11 +26,12 @@ button {
   color: black;
   transition-duration: 0.4s;
   z-index: 5;
+  margin-bottom: 5%;
 }
-button:hover {background-color: #4CAF50;
+.button:hover {background-color: #4CAF50;
   color: white;}
 
-button:active {
+.button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
@@ -61,6 +71,7 @@ h1 {
   display:flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  margin-top: 25%;
 } 
 
 input[type="text"] {
@@ -90,7 +101,7 @@ input[type="text"] {
   border-top: 40px solid white;
   position: absolute;
   bottom: -25px;
-  left: 35%;
+  right: 35%;
   -ms-transform: rotate(-25deg); /* IE 9 */
   -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
   transform: rotate(-25deg);
@@ -100,7 +111,7 @@ input[type="text"] {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 100px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   width: 100%;
   position: relative; opacity: 0.8;
 }
@@ -125,3 +136,4 @@ input[type="text"] {
   border-radius: 100px;
   margin-bottom: 5%;
 }
+
