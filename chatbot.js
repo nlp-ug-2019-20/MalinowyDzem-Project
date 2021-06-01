@@ -1,3 +1,45 @@
+//Speech Recognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+const synth = window.speechSynthesis;
+let voices = synth.getVoices();
+
+let recognition = new SpeechRecognition();
+recognition.continuous = true;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 50;
+voices.lang = 'en-US';
+let greeting = "Welcome to Foodbot! What dish would you like to make? Say the name of the dish or an ingredient."
+
+
+const startButton = document.querySelector('.chat-circle_robot');
+const diagnostic = document.querySelector('.output');
+const text = document.querySelector('.text')
+const bg = document.querySelector('html');
+
+startButton.onclick = function() {
+    const speech = new SpeechSynthesisUtterance();
+    recognition.start()
+    speech.text = greeting;
+    output.innerHTML = "<h1>"+ greeting + "</h1>"; 
+    window.speechSynthesis.speak(speech);
+       
+}
+
+recognition.onresult = function(event) {
+  const current = event.resultIndex;
+  const transcript = event.results[current][0].transcript;
+  readOutLoud(transcript)
+}
+
+const readOutLoud = (message) => {
+  const speech = new SpeechSynthesisUtterance();
+      findByIngredients(message);
+}
+//Speech Recognition
+
 const options = document.getElementById("options")
 var qNumb = 0;
 var question = '<h1>Hello, I am Foodbot. What is your name?</h1>';
@@ -7,17 +49,18 @@ output.innerHTML = question;
 function chatBot() {
   var input = document.getElementById('input').value;
   console.log(input);
-  
+ 
   if (qNumb == 0) {
     output.innerHTML = '<h1>Awesome! Nice to meet you, ' + input + '.</h1>';
     document.getElementById('input').value = "";
-    question = '<h1>Type in the name of the dish or ingredient</h1>';
+    question = '<h1>Type in the name of one or more ingredients.</h1>';
     setTimeout(timedQuestion, 1000);
   }
     else if (qNumb == 1) {
         output.innerHTML = '<h1>...</h1>';
-        question = '<h1>Pick a dish that you want to make.</h1>';
+        question = '<h1>Pick a dish that you would like to make.</h1>';
         findByIngredients(input);
+        // console.log(message);
         document.getElementById('input').value = "";
         setTimeout(timedQuestion, 1000);
     }
@@ -37,7 +80,7 @@ function pressKey(event) {
   }
 }
 
-let pass ="?apiKey=8cff268749b8427bafa3345580f5662f"
+let pass ="?apiKey=51db09fa50d840a89812ab4301106df5"
 // fetch(url="https://api.spoonacular.com/recipes/complexSearch?apiKey=51db09fa50d840a89812ab4301106df5")
 //                 .then(response => response.json())
 //                 .then(response => {
@@ -93,14 +136,29 @@ function getRecipeIgredients(recipeId){
             }
           }
         }
-        
-        
+      
         console.log(ingredientsList);
        output.innerHTML = "";
        output.append(`${ingredientsList}`);
        options.remove()
-      })
+
+       recognition.onresult = function(event) {
+        const current = event.resultIndex;
+        const transcript = event.results[current][0].transcript;
+        readOutLoud(transcript)
+      }
+      const readOutLoud = (message) => {  
+        const speech = new SpeechSynthesisUtterance();
+        console.log(message);
+        if (message.includes('read ingredients')) {
+        const speech = new SpeechSynthesisUtterance();
+        speech.text = ingredientsList;
+        window.speechSynthesis.speak(speech);
+      }
     }
+      })
+  }
+
       function getRecipeInstruction(recipeId){
         var secondOutput = document.createElement("div");
         let url="https://api.spoonacular.com/recipes/"+recipeId+"/analyzedInstructions"+pass
@@ -117,5 +175,22 @@ function getRecipeIgredients(recipeId){
               secondOutput.className = "secondOutput";
               secondOutput.innerHTML = "";
               secondOutput.append(`${instructions}`);
-            })
-     }
+
+              recognition.onresult = function(event) {
+                const current = event.resultIndex;
+                const transcript = event.results[current][0].transcript;
+                readOutLoud(transcript)
+              }
+              const readOutLoud = (message) => {  
+                const speech = new SpeechSynthesisUtterance();
+                console.log(message);
+                if (message.includes('read instructions')) {
+                const speech = new SpeechSynthesisUtterance();
+                speech.text = instructions;
+                window.speechSynthesis.speak(speech);
+              }
+            }
+            }
+          )
+        };
+      
